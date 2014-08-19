@@ -1,6 +1,6 @@
 ##########################################################################################################
 
-## Coursera Getting and Cleaning Data Course Project
+## Coursera: Getting and Cleaning Data Course Project
 ## Jorge Gonzalez
 ## August 2014
 
@@ -58,7 +58,7 @@ setwd ("C:/COURSERA/Getdata/Project")
  test <- merge(test, X_test, all=TRUE)  
    
  #combine train and test 
- dataset1 <- rbind(train, test) 
+ combtraintest <- rbind(train, test) 
  #
  #
 #################################################################################################
@@ -68,7 +68,7 @@ setwd ("C:/COURSERA/Getdata/Project")
  features = read.table("UCI HAR Dataset/features.txt", col.names=c("feature_id", "feature_label"),)  #561 
  #Extracts only the measurements on the mean and standard deviation for each measurement.  
  selected_features <- features[grepl("mean\\(\\)", features$feature_label) | grepl("std\\(\\)", features$feature_label), ] 
- dataset2 <- dataset1[, c(c(1, 2, 3), selected_features$feature_id + 3) ] 
+ meanandSD <- combtraintest[, c(c(1, 2, 3), selected_features$feature_id + 3) ] 
 #
 #
 #################################################################################################
@@ -76,7 +76,7 @@ setwd ("C:/COURSERA/Getdata/Project")
 #Step 3: "Uses descriptive activity names to name the activities in the data set." 
 
  activity_labels = read.table("UCI HAR Dataset/activity_labels.txt", col.names=c("activity_id", "activity_label"),) # 
- dataset3 = merge(dataset2, activity_labels) 
+ meanandSDActNames = merge(meanandSD, activity_labels) 
  #
  #
  ################################################################################################
@@ -86,10 +86,10 @@ setwd ("C:/COURSERA/Getdata/Project")
  selected_features$feature_label = gsub("\\(\\)", "", selected_features$feature_label) 
  selected_features$feature_label = gsub("-", ".", selected_features$feature_label) 
  for (i in 1:length(selected_features$feature_label)) { 
-             colnames(dataset3)[i + 3] <- selected_features$feature_label[i] 
+             colnames(meanandSDActNames)[i + 3] <- selected_features$feature_label[i] 
          } 
 
-dataset4 = dataset3 
+meanandSDActNamesFeautres = meanandSDActNames 
 #
 #
 ###############################################################################################
@@ -97,7 +97,7 @@ dataset4 = dataset3
  #Step 5: "Creates a second, independent tidy data set with the average of each variable for each activity and each subject." 
 
  drops <- c("ID","activity_label") 
- dataset5 <- dataset4[,!(names(dataset4) %in% drops)] 
+ dataset5 <- meanandSDActNamesFeautres[,!(names(meanandSDActNamesFeautres) %in% drops)] 
  aggdata <-aggregate(dataset5, by=list(subject = dataset5$subject_id, activity = dataset5$activity_id), FUN=mean, na.rm=TRUE) 
  drops <- c("subject","activity") 
  aggdata <- aggdata[,!(names(aggdata) %in% drops)] 
@@ -106,5 +106,5 @@ dataset4 = dataset3
 # If you want to create a csv file, uncomment the next row and run it in R
 #write.csv(file="tidydataset.csv", x=aggdata) 
 # 
-
+###############################################################################################
 # End of script
