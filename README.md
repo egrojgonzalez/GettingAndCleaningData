@@ -31,13 +31,13 @@ You should create one R script called run_analysis.R that does the following.
 
 ##Steps to reproduce this project
 
-*1.Open the R script  run_analysis.r  using a text editor.  
+* 1.Open the R script  run_analysis.r  using a text editor.  
 
-*2.Change the parameter of the setwd function call (row 20) to the working directory (i.e., the folder where the R script file is saved) and save the script. Assumtion that the /UCI HAR Dataset/ folder exist under the worikng directory
+* 2.Change the parameter of the setwd function call (row 20) to the working directory (i.e., the folder where the R script file is saved) and save the script. Assumtion that the /UCI HAR Dataset/ folder exist under the worikng directory
 
-*3.Run the R script  run_analysis.R . 
+* 3.Run the R script  run_analysis.R . 
 
 ##Output produced
 
-*Tidy dataset file  tidydataset.txt 
+* Tidy dataset file  tidydataset.txt 
 
