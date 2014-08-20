@@ -19,6 +19,19 @@
 
 setwd ("C:/COURSERA/Getdata/Project")
 
+# Install and load libraries
+
+if (!require("data.table")) { 
+           install.packages("data.table") 
+         }  
+
+if (!require("reshape2")) { 
+           install.packages("reshape2") 
+         } 
+
+require("data.table") 
+require("reshape2") 
+
 #Step 1: "Merges the training and the test sets to create one data set." 
 
 
