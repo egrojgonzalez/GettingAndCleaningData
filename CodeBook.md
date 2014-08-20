@@ -5,7 +5,7 @@ The dataset is based on data downloaded from [here](https://d396qusza40orc.cloud
 The files were unzipped in "/workingdirectory/UCI HAR Dataset/"
  
 Inertial Signal files not used in this project.
-The"features_info.txt" file Shows information about the variables used on the feature vector.                  
+The"features_info.txt" file shows information about the variables used on the feature vector.                  
 
 ##Data Set Information
 
@@ -144,16 +144,15 @@ The sensor signals (accelerometer and gyroscope) were pre-processed by applying 
 
 ##Output Files
 
-  data.frame created in step 5 tidydatase.txt (same structure)  
+  data.frame created in step 5 tidydataset.txt (same structure)  
  
   
 ##How run_analysis.R script implements the above steps:
-      ==============
-       
+            
 * Require reshape2 and data.table libraries.
 * Load and process both test and train data
 * Merge train and test data sets
 * Extract the mean and standard deviation for each measure
-* Load the features and activity labels.
-* calcuated average mean for each variable for each feature for each activity. 
-* create titydata.txt set in woriking directory
+* Load the activity and the subject labels.
+* calcuated average of each variable for each activity and each subject. 
+* Create the titydataset.txt in the working directory.
