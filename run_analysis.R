@@ -121,4 +121,4 @@ meanandSDActNamesFeautres = meanandSDActNames
 #write.csv(file="tidydataset.csv", x=aggdata) 
 # 
 ###############################################################################################
-# End of script
+# End of script 
